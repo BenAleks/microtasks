@@ -9,7 +9,7 @@ type MoneyType = {
 
 type CurrentMoneyType = {
     currentMoney:Array<MoneyType>
-    onClackHandler: (value:FilterValueType)=>void
+    onClickHandler: (value:FilterValueType)=>void
 }
 export const NewComponents = (props:CurrentMoneyType) => {
     debugger
@@ -26,9 +26,9 @@ export const NewComponents = (props:CurrentMoneyType) => {
                     )
                 })}
             </ul>
-            <button onClick={() => props.onClackHandler('all')}>all</button>
-            <button onClick={() => props.onClackHandler('rubles')}>rubles</button>
-            <button onClick={() => props.onClackHandler('dollars')}>dollars</button>
+            <button onClick={() => props.onClickHandler('all')}>all</button>
+            <button onClick={() => props.onClickHandler('rubles')}>rubles</button>
+            <button onClick={() => props.onClickHandler('dollars')}>dollars</button>
         </>
     );
 };

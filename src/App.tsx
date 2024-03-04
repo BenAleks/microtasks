@@ -22,7 +22,7 @@ function App() {
     if (filter === 'dollars') {currentMoney = money.filter((el)=> el.banknots === 'Dollars')}
     if (filter === 'rubles') {currentMoney = money.filter((el)=> el.banknots ==='RUBLS')}
 
-    const onClackHandler = (value:FilterValueType) => {
+    const onClickHandler = (value:FilterValueType) => {
         debugger
         setFilter(value)
     }
@@ -30,7 +30,7 @@ function App() {
 
     return (
     <div className="App">
-      <NewComponents currentMoney={currentMoney} onClackHandler={onClackHandler}/>
+      <NewComponents currentMoney={currentMoney} onClickHandler={onClickHandler}/>
     </div>
     );
 }
