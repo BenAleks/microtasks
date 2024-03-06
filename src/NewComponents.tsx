@@ -12,7 +12,6 @@ type CurrentMoneyType = {
     onClickHandler: (value:FilterValueType)=>void
 }
 export const NewComponents = (props:CurrentMoneyType) => {
-    debugger
     return (
         <>
             <ul>

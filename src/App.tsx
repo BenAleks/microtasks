@@ -1,6 +1,8 @@
-import React, {useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import './App.css';
 import {NewComponents} from "./NewComponents";
+import {Input} from "./components/Input";
+import {Button} from "./components/Button";
 
 export type FilterValueType = 'all' | 'rubles' | 'dollars';
 function App() {
@@ -15,22 +17,51 @@ function App() {
         { banknots: 'RUBLS', value: 50, number: ' v1234567890' },
     ])
 
+    const [message, setMessage] = useState([
+            {message: 'message1'},
+            {message: 'message2'},
+            {message: 'message3'},
+            {message: 'message4'},
+            {message: 'message5'}
+        ]
+    )
+
     let currentMoney = money;
 
-    const [filter, setFilter] = useState<FilterValueType>('all')
+    let [filter, setFilter] = useState<FilterValueType>('all')
+
 
     if (filter === 'dollars') {currentMoney = money.filter((el)=> el.banknots === 'Dollars')}
     if (filter === 'rubles') {currentMoney = money.filter((el)=> el.banknots ==='RUBLS')}
 
     const onClickHandler = (value:FilterValueType) => {
-        debugger
+
         setFilter(value)
     }
 
 
+    let [title, setTitle] = useState('')
+
+    const addMessageHandler = () =>{
+        setMessage([{message: title}, ...message])
+        setTitle('')
+    }
+
     return (
     <div className="App">
-      <NewComponents currentMoney={currentMoney} onClickHandler={onClickHandler}/>
+        <div>
+            <NewComponents currentMoney={currentMoney} onClickHandler={onClickHandler}/>
+        </div>
+        <div>
+            <Input title={title} setTitle={setTitle}/>
+            <Button nameButton={'+'} addMessageHandler={addMessageHandler}/>
+        </div>
+        {message.map((el, index) => {
+            return (
+                <div key={index}>{el.message}</div>
+            )
+        })}
+
     </div>
     );
 }
